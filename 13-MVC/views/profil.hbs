@@ -1,0 +1,8 @@
+{{#if user}}
+<form action="/profil?_method=PUT" method="post">
+<input type="text" placeholder="{{user.name}}" name="name">
+<input type="email" placeholder="{{user.email}}" name="email">
+<input type="password" placeholder="Nouveau mot de passe" name="password">
+<button type="submit">EDIT INFO</button>
+</form>
+{{/if}}

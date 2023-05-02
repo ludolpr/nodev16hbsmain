@@ -1,0 +1,17 @@
+{{!--
+    Page: Home
+--}}
+
+<h1>Titre page home</h1>
+
+{{#if user}}
+    <h1>Bienvenue {{user.name}}</h1>
+{{/if}}
+
+{{#each (limit articles 5)}}
+    {{> home/list id=this.id titre=this.title price=this.price}}
+{{/each}}
+
+{{#if user.isAdmin}}
+    {{> all/form_add }}
+{{/if}}

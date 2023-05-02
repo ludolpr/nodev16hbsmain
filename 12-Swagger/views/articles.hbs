@@ -1,0 +1,8 @@
+
+<h1>Titre page Articles</h1>
+
+{{#each articles}}
+    {{!-- Partial afin d'afficher les items --}}
+    {{> home/list id=this.id titre=this.title price=this.price img=this.image}}
+{{/each}}
+

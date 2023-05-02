@@ -1,0 +1,19 @@
+{{!-- 
+Page: article_id
+ --}}
+
+{{#if articles}}
+    {{#each articles}}
+        <h1>Page ID {{this.id}}</h1>
+        <p>
+            titre : {{this.title}}
+            price : {{this.price}}
+        </p>
+        <a onclick="window.history.back(); return false;">Page précédente</a>
+    {{/each}}
+    
+{{else}}
+
+<h2>Cet article n'existe pas !</h2>
+
+{{/if}}

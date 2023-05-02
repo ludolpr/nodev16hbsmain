@@ -1,0 +1,49 @@
+{{!--
+Page: article_id
+--}}
+
+{{#if data.article}}
+<h1>Page ID {{data.article.id}}</h1>
+<p>
+    titre : {{data.article.title}} <br>
+    price : {{data.article.price}}
+</p>
+image : <br>
+<img src="/assets/images/{{data.article.image}}" width="200" />
+<br>
+<br>
+<a onclick="window.history.back(); return false;">Page précédente</a>
+<div>
+    <h2>Section Commentaire</h2>
+</div>
+{{#if @root.user}}
+<form action="/comment/{{data.article.id}}" method="post">
+    <input type="text" name="comment" placeholder="Commentaire">
+    <button type="submit">Envoyer</button>
+</form>
+</p>
+{{/if}}
+
+
+{{#if data.commentaires}}
+{{#each data.commentaires}}
+<div style="border: 1px solid red; margin-bottom:5px">
+    <p>
+        L'utilisateur <b>{{this.name}}</b> à envoyer un message le <b>{{{formDate this.create_time "DD MMMM YYYY"}}}</b>
+        ({{{formDateFromNow this.create_time "DD MMMM YYYY"}}}) <br>
+        <b>Commentaire:</b> {{this.comment}}
+    </p>
+    {{#if (ifCheck this.user_id ../user.id)}}
+    <form action="/comment/{{this.id}}?_method=DELETE" method="post">
+        <button type="submit">DELETE COMMENT</button>
+    </form>
+    {{/if}}
+</div>
+{{/each}}
+{{else}}
+<h3>Aucun commentaires</h3>
+
+{{/if}}
+{{else}}
+<h2>Cet article n'existe pas !</h2>
+{{/if}}

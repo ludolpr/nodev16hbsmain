@@ -1,0 +1,15 @@
+{{!-- 
+Partial: Form add
+ --}}
+<div class="form-add">
+  <h3>AJOUT ARTICLE</h3>
+  <form action="/article" method="post" enctype="multipart/form-data">
+    <label for="title">Title</label>
+    <input id="title" type="text" name="title" />
+    <label for="price">Price</label>
+    <input id="price" type="number" name="price" />
+    <input type="file" name="art_image" required>
+    <button type="submit">SEND</button>
+  </form>
+</div>
+        

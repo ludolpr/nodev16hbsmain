@@ -1,0 +1,25 @@
+{{!-- 
+Page: Connexion
+ --}}
+
+
+<h3>REGISTER</h3>
+<form action="/register" method="post">
+    <input type="text" name="name" placeholder="Name">
+    <input type="email" name="email" placeholder="Email">
+    <input type="password" name="password" placeholder="Password">
+    <button type="submit">SEND</button>
+</form>
+
+<h3>LOGIN</h3>
+<form action="/login" method="post">
+    <input type="email" name="email" placeholder="Email">
+    <input type="password" name="password" placeholder="Password">
+    <button type="submit">SEND</button>
+</form>
+
+<h3>MOT DE PASSE OUBLIER</h3>
+<form action="/resetpassword" method="post">
+    <input type="email" name="email" placeholder="Email">
+    <button type="submit">SEND</button>
+</form>

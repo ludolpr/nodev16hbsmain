@@ -1,0 +1,22 @@
+{{!-- 
+Partial: nav
+ --}}
+
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/contact">Contact</a></li>
+    <li><a href="/articles">Articles</a></li>
+    {{#if user}}
+    <li><a href="/profil">Profil</a></li>
+        {{#if user.isAdmin}}
+            <li><a href="/admin">Admin</a></li>
+        {{/if}}
+    <li>
+        <form action="/logout" method="post">
+             <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Déconnexion</button>      
+        </form> 
+    </li>
+    {{else}}
+        <li><a href="/connexion">Connexion</a></li>
+    {{/if}}
+</ul>

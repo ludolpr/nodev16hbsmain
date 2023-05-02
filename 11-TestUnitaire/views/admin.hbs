@@ -1,0 +1,58 @@
+{{!--
+Page: Admin
+--}}
+
+<h1>ADMIN PAGE</h1>
+{{#if flash}}
+<h3 style="color:red;">{{this.flash}}</h3>
+{{/if}}
+
+<div style="border:2px solid green;">
+    <h3>ENVOIE DE MAIL</h3>
+    <form action="/mail" method="post">
+        <input type="text" name="sujet" placeholder="Sujet">
+        <input type="email" name="email" placeholder="Email">
+        <input type="text" name="content" placeholder="Message">
+        <button type="submit">Send</button>
+    </form>
+</div>
+
+{{> all/form_add}}
+
+{{!-- Condition si "db" est true --}}
+{{#if articles}}
+<h3>LISTE ARTICLES</h3>
+{{!-- Boucle each de "db" afin d'afficher les items --}}
+{{#each articles}}
+
+<div class="list-item">
+    <div class="row">
+        <img src="/assets/images/{{this.image}}" width="35" />
+        <p>{{@index}} | <b>Titre:</b> {{this.title}} & <b>Price:</b> {{this.price}}</p>
+    </div>
+    <div class="row">
+        {{!--
+        Formulaire avec des input ayant pour name "title & price" afin de les récupérer
+        dans le req.body avec body-parser et ayant en action la route qu'on lui donne
+        --}}
+        <form action="/article/{{this.id}}?_method=PUT" method="post" enctype="multipart/form-data">
+            <input type="text" name="title" required>
+            <input type="number" name="price" required>
+            <input type="file" name="edit_image">
+            {{!-- Boutton de type submit --}}
+            <button type="submit">EDIT</button>
+        </form>
+        <form action="/article/{{this.id}}?_method=DELETE" method="post">
+            <button type="submit">DELETE</button>
+        </form>
+
+        <a href="/article/{{this.id}}"><button>Voir en détails</button></a>
+
+    </div>
+</div>
+{{/each}}
+
+{{!-- Sinon tu affiche le h2 --}}
+{{else}}
+<h2>Aucun article dans la DB</h2>
+{{/if}}

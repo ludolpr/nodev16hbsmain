@@ -1,0 +1,246 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Ma description ici [http://url](http://url)",
+    "version": "1.0.0",
+    "title": "BrunoApp",
+    "termsOfService": "http://url_to_tos/",
+    "contact": {
+      "email": "email@mail.r"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Articles",
+      "description": "Ma super description"
+    }
+  ],
+  "paths": {
+    "/article": {
+      "post": {
+        "tags": [
+          "Articles"
+        ],
+        "summary": "/article",
+        "description": "",
+        "operationId": "uploadFile",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "name": "art_image",
+            "in": "formData",
+            "description": "file to upload",
+            "required": true,
+            "type": "file"
+          },
+          {
+            "name": "title",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "price",
+            "in": "formData",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/articles": {
+      "get": {
+        "summary": "/articles",
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "flash": {
+                  "type": "string",
+                  "example": "get article"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "sucess get"
+                },
+                "articles": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "price": {
+                        "type": "number"
+                      },
+                      "image": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "title",
+                      "price",
+                      "image"
+                    ]
+                  },
+                  "example": [
+                    {
+                      "id": 8,
+                      "title": "string",
+                      "price": 9,
+                      "image": "default.png"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Articles"
+        ],
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/article/{id}": {
+      "get": {
+        "summary": "/article/{id}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        },
+        "tags": [
+          "Articles"
+        ]
+      },
+      "put": {
+        "summary": "/article/{id}",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "edit_image",
+            "in": "formData",
+            "description": "file to upload",
+            "required": true,
+            "type": "file"
+          },
+          {
+            "name": "title",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "price",
+            "in": "formData",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        },
+        "tags": [
+          "Articles"
+        ]
+      },
+      "delete": {
+        "summary": "/article/{id}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        },
+        "tags": [
+          "Articles"
+        ]
+      }
+    },
+    "/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Login user",
+        "description": "",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "autre doc / lien",
+    "url": "http://ton_lien"
+  }
+}

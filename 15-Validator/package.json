@@ -1,0 +1,41 @@
+{
+  "name": "01",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "MODE=test nodemon --exec 'mocha ./tu/*.js'",
+    "start": "MODE=prod node server.js",
+    "dev": "MODE=dev nodemon server.js",
+    "mocha": "MODE=test nodemon --exec 'mocha ./tu/*mocha.js'",
+    "chai": "MODE=test nodemon --exec 'mocha ./tu/*chai.js'"
+  },
+  "author": "Ax3l72",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.20.0",
+    "chai": "^4.3.6",
+    "chai-http": "^4.3.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-handlebars": "^6.0.6",
+    "express-mysql-session": "^2.1.8",
+    "express-oas-generator": "^1.0.45",
+    "express-session": "^1.17.3",
+    "express-validator": "^6.14.2",
+    "method-override": "^3.0.0",
+    "mocha": "^10.0.0",
+    "moment": "^2.29.4",
+    "moment-timezone": "^0.5.34",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "mysql": "^2.18.1",
+    "nodemailer": "^6.7.7",
+    "swagger-ui-express": "^4.5.0",
+    "util": "^0.12.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
